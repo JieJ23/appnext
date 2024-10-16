@@ -25,11 +25,17 @@ export default async function Home() {
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
-        <ul>
-          {posts.slice(0, 10).map((post, index) => (
-            <li key={index}>{post.Player}</li>
+        <div>
+          {posts.slice(0, 10).map((obj, index) => (
+            <div key={index} className="flex gap-2">
+              <div>{obj.Player}</div>
+              <div>{obj.Tier}</div>
+              <div>{obj["Build Name"]}</div>
+              <div>{obj["Time Used"]}</div>
+              <div>{obj.Class}</div>
+            </div>
           ))}
-        </ul>
+        </div>
       </main>
     </div>
   );
