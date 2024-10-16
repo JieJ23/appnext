@@ -1,6 +1,8 @@
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  let data = await fetch('https://api.vercel.app/blog')
+  let posts = await data.json()
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -22,6 +24,11 @@ export default function Home() {
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>{post.title}</li>
+          ))}
+        </ul>
       </main>
     </div>
   );
